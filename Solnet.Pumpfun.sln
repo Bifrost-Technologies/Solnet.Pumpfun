@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solnet.Pumpfun", "Solnet.Pumpfun\Solnet.Pumpfun.csproj", "{71ACAB4F-2771-4272-B705-2ABBD72FBCF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71ACAB4F-2771-4272-B705-2ABBD72FBCF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71ACAB4F-2771-4272-B705-2ABBD72FBCF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71ACAB4F-2771-4272-B705-2ABBD72FBCF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71ACAB4F-2771-4272-B705-2ABBD72FBCF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {131F74FC-5316-4E59-AB69-75B73690146A}
+	EndGlobalSection
+EndGlobal
