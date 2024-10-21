@@ -32,7 +32,7 @@ namespace Solnet.Pumpfun
         {
             this.trader = _trader;
         }
-        public async Task Buy(string mint_address, decimal sol_amount,  decimal slippage_percentage, ulong computebudget = 100000, ulong computeprice = 1080000)
+        public async Task<string> Buy(string mint_address, decimal sol_amount,  decimal slippage_percentage, ulong computebudget = 100000, ulong computeprice = 1080000)
         {
             PublicKey mint = new PublicKey(mint_address);
             PublicKey associatedUser = AssociatedTokenAccountProgram.DeriveAssociatedTokenAccount(trader, mint);
@@ -66,10 +66,14 @@ namespace Solnet.Pumpfun
                 tx.AddInstruction(buy_instruction);
                 byte[] final_tx = tx.Build(trader);
                 string response = (await RpcClient.SendTransactionAsync(final_tx)).RawRpcResponse;
-                Console.WriteLine(response);
+                return response;
+            }
+            else
+            {
+                return "curve not found";
             }
         }
-        public async Task Sell(string mint_address, decimal token_amount, decimal min_sol_out = 0, ulong computebudget = 100000, ulong computeprice = 2080000)
+        public async Task<string> Sell(string mint_address, decimal token_amount, decimal min_sol_out = 0, ulong computebudget = 100000, ulong computeprice = 2080000)
         {
             PublicKey mint = new PublicKey(mint_address);
             PublicKey associatedUser = AssociatedTokenAccountProgram.DeriveAssociatedTokenAccount(trader, mint);
@@ -95,8 +99,12 @@ namespace Solnet.Pumpfun
                    this.trader,
                    TokenProgram.ProgramIdKey));
                 byte[] final_tx = tx.Build(trader);
-                var response = await RpcClient.SendTransactionAsync(final_tx);
-                Console.WriteLine(response.RawRpcResponse);
+                string response = (await RpcClient.SendTransactionAsync(final_tx)).RawRpcResponse;
+                return response;
+            }
+            else
+            {
+                return "curve not found";
             }
         }
     }
