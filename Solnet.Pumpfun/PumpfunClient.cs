@@ -89,6 +89,11 @@ namespace Solnet.Pumpfun
                 tx.AddInstruction(computeBudget);
                 tx.AddInstruction(computePrice);
                 tx.AddInstruction(sell_instruction);
+                tx.AddInstruction(TokenProgram.CloseAccount(
+                   associatedUser,
+                   this.trader,
+                   this.trader,
+                   TokenProgram.ProgramIdKey));
                 byte[] final_tx = tx.Build(trader);
                 var response = await RpcClient.SendTransactionAsync(final_tx);
                 Console.WriteLine(response.RawRpcResponse);
