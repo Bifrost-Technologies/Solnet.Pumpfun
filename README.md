@@ -75,16 +75,16 @@ static async Task PerformTenSecondTrade(string tokenAddress, decimal sol_amount,
     try
     {
         //Buy the token.  Token Address  -  Sol Amount - Slippage Percent  
-        await pumpFun.Buy("CA/MINT ADDRESS HERE", 0.001m, 10);
+        await pumpFun.Buy(tokenAddress, 0.001m, 10);
 
         await Task.Delay(10000);
 
-        PublicKey associatedUser = AssociatedTokenAccountProgram.DeriveAssociatedTokenAccount(_trader, new PublicKey("CA/MINT ADDRESS HERE"));
+        PublicKey associatedUser = AssociatedTokenAccountProgram.DeriveAssociatedTokenAccount(_trader, new PublicKey(tokenAddress));
         var tokenbalance = await pumpFun.RpcClient.GetTokenAccountBalanceAsync(associatedUser);
 
         await Task.Delay(1000);
 
-        await pumpFun.Sell("CA/MINT ADDRESS HERE", tokenbalance.Result.Value.AmountDecimal);
+        await pumpFun.Sell(tokenAddress, tokenbalance.Result.Value.AmountDecimal);
 
     }
     catch (Exception ex)
